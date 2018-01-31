@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6035.robot;
 
 import java.awt.*;
+
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.DataFlavor;
@@ -13,9 +14,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.LinkedList;
 import javax.swing.*;
-import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.SPI;
+
 
 /**
  * This class is a basic plotting class using the Java AWT interface. It has basic features which allow the user
@@ -693,20 +692,7 @@ class LinePlot extends JPanel implements ClipboardOwner{
         return temp;
     }
 
-    private double YDisplacement;
-    public double getYDisplacement(){
-        AHRS ahrs;
-        ahrs = new AHRS(SPI.Port.kMXP);
-        YDisplacement = ahrs.getDisplacementY();
-        return this.YDisplacement;
-    }
-    private double XDisplacement;
-    public double getXDisplacement(){
-        AHRS ahrs;
-        ahrs = new AHRS(SPI.Port.kMXP);
-        XDisplacement = ahrs.getDisplacementX();
-        return this.XDisplacement;
-    }
+
 
     /**********Class for Linked List************/
 

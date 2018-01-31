@@ -1,16 +1,13 @@
 package org.usfirst.frc.team6035.robot;
 
 import java.awt.Color;
+
 import java.awt.GraphicsEnvironment;
 import java.util.LinkedList;
 import java.util.List;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
-import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.SPI;
-
 
 /**
  * This Class provides many useful algorithms for Robot Path Planning. It uses optimization techniques and knowledge
