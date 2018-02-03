@@ -7,7 +7,7 @@ public class AutoDirectionGenerator {
     public static void main(String[] args) {
         generateDriveStraight();
 
-//        generateLeftToLeftSwitch();
+        generateLeftToLeftSwitch();
 //        generateMiddleToLeftSwitch();
         generateRightToLeftSwitch();
 //

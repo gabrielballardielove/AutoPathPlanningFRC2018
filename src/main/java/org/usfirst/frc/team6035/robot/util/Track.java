@@ -60,4 +60,11 @@ public class Track {
         return data;
     }
 
+    public List<Double> leftSpeeds() {
+        return leftSpeeds;
+    }
+
+    public List<Double> rightSpeeds() {
+        return rightSpeeds;
+    }
 }
