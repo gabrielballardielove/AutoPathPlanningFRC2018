@@ -686,21 +686,32 @@ public class PathPlanner  {
             double[][] RedPortalLine2 = new double[][]{{54 - 2.298, 0}, {54, 2.5}};
             fig3.addData(RedPortalLine2, Color.red);
 
-            double[][] RedSwitch = new double[][]{{14, 7.1042}, {14, 27 - 7.1042}, {18.666666, 27 - 7.1042}, {18.6666, 7.1042}, {14, 7.1042}};
+            double[][] RedSwitch = new double[][]{{11.6666, 7.1042}, {11.6666, 27 - 7.1042}, {16.3332, 27 - 7.1042}, {16.3332, 7.1042}, {11.6666, 7.1042}};
             fig3.addData(RedSwitch, Color.red);
 
-            double[][] BlueSwitch = new double[][]{{54 - 14, 7.1042}, {54 - 14, 27 - 7.1042}, {54 - 18.6666, 27 - 7.1042}, {54 - 18.6666, 7.1042}, {54 - 14, 7.1042}};
+            double[][] BlueSwitch = new double[][]{{54 - 11.6666, 7.1042}, {54 - 11.6666, 27 - 7.1042}, {54 - 16.3332, 27 - 7.1042}, {54 - 16.3332, 7.1042}, {54 - 11.6666, 7.1042}};
             fig3.addData(BlueSwitch, Color.blue);
 
-            double[][] RedCube = new double[][]{{10.5, 11.625}, {10.5, 11.625 + 3.75}, {14, 11.625 + 3.75}, {14, 11.625}, {10.5, 11.625}};
+            double[][] RedCube = new double[][]{{8.1666, 11.625}, {8.1666, 11.625 + 3.75}, {11.6666, 11.625 + 3.75}, {11.6666, 11.625}, {8.1666, 11.625}};
             fig3.addData(RedCube, Color.red);
 
-            double[][] BlueCube = new double[][]{{54 - 10.5, 11.625}, {54 - 10.5, 11.625 + 3.75}, {40, 11.625 + 3.75}, {40, 11.625}, {54 - 10.5, 11.625}};
+            double[][] BlueCube = new double[][]{{54 - 8.1666, 11.625}, {54 - 8.1666, 11.625 + 3.75}, {42.3334, 11.625 + 3.75}, {42.3334, 11.625}, {54 - 8.1666, 11.625}};
             fig3.addData(BlueCube, Color.blue);
 
-
+            double[][] RedPlatform = new double[][] {{21.458396, 7.9375}, {21.458396, 7.9375 + 11.125}, {26.3124, 7.9375 + 11.125}, {26.3124, 7.9375}, {21.458396, 7.9375}};
+            fig3.addData(RedPlatform, Color.red);
+            
+            double[][] BluePlatform = new double[][] {{32.541604, 7.9375}, {32.541604, 7.9375 + 11.125}, {27.6876, 7.9375 + 11.125}, {27.6876, 7.9375}, {32.541604, 7.9375}};
+            fig3.addData(BluePlatform, Color.blue);
+            
+            double[][] Scale1 = new double[][] {{24.992, 18}, {24.992, 21}, {24.992 + 4.016, 21}, {24.992 + 4.016, 18}, {24.992, 18}};
+            fig3.addData(Scale1,  Color.black);
+            
+            double[][] Scale2 = new double[][] {{24.992, 9}, {24.992, 6}, {24.992 + 4.016, 6}, {24.992 + 4.016, 9}, {24.992, 9}};
+            fig3.addData(Scale2, Color.black);
+            
             double[][] Path = new double[][]{
-                    {0, 21}, {8, 21}, {12, 24}, {15, 24}, {16, 23}, {16, 20}
+                    {0, 21}, {7, 21}, {10, 24}, {13, 24}, {14, 23}, {14, 20}
             };
 
             long start = System.currentTimeMillis();
@@ -741,7 +752,7 @@ public class PathPlanner  {
                 PrintWriter pr = new PrintWriter("LeftWheels-LeftToLeft-Blue");
 
                 for (int i = 0; i < LeftWheelsLeftToLeftBlue.length; i++) {
-                    pr.println(LeftWheelsLeftToLeftBlue[i]/20 + ", ");
+                    pr.println(LeftWheelsLeftToLeftBlue[i] + ", ");
                 }
                 pr.close();
             } catch (Exception e) {
@@ -753,7 +764,7 @@ public class PathPlanner  {
                 PrintWriter pr = new PrintWriter("RightWheels-LeftToLeft-Blue");
 
                 for (int i = 0; i < RightWheelsLeftToLeftBlue.length; i++) {
-                    pr.println(RightWheelsLeftToLeftBlue[i]/20 + ", ");
+                    pr.println(RightWheelsLeftToLeftBlue[i] + ", ");
                 }
                 pr.close();
             } catch (Exception e) {
@@ -791,21 +802,33 @@ public class PathPlanner  {
             double[][] RedPortalLine2 = new double[][]{{54 - 2.298, 0}, {54, 2.5}};
             fig3.addData(RedPortalLine2, Color.red);
 
-            double[][] RedSwitch = new double[][]{{14, 7.1042}, {14, 27 - 7.1042}, {18.666666, 27 - 7.1042}, {18.6666, 7.1042}, {14, 7.1042}};
+            double[][] RedSwitch = new double[][]{{11.6666, 7.1042}, {11.6666, 27 - 7.1042}, {16.3332, 27 - 7.1042}, {16.3332, 7.1042}, {11.6666, 7.1042}};
             fig3.addData(RedSwitch, Color.red);
 
-            double[][] BlueSwitch = new double[][]{{54 - 14, 7.1042}, {54 - 14, 27 - 7.1042}, {54 - 18.6666, 27 - 7.1042}, {54 - 18.6666, 7.1042}, {54 - 14, 7.10}};
+            double[][] BlueSwitch = new double[][]{{54 - 11.6666, 7.1042}, {54 - 11.6666, 27 - 7.1042}, {54 - 16.3332, 27 - 7.1042}, {54 - 16.3332, 7.1042}, {54 - 11.6666, 7.10}};
             fig3.addData(BlueSwitch, Color.blue);
 
-            double[][] RedCube = new double[][]{{10.5, 11.625}, {10.5, 11.625 + 3.75}, {14, 11.625 + 3.75}, {14, 11.625}, {10.5, 11.625}};
+            double[][] RedCube = new double[][]{{8.1666, 11.625}, {8.1666, 11.625 + 3.75}, {11.6666, 11.625 + 3.75}, {11.6666, 11.625}, {8.1666, 11.625}};
             fig3.addData(RedCube, Color.red);
 
-            double[][] BlueCube = new double[][]{{54 - 10.5, 11.625}, {54 - 10.5, 11.625 + 3.75}, {40, 11.625 + 3.75}, {40, 11.625}, {54 - 10.5, 11.625}};
+            double[][] BlueCube = new double[][]{{54 - 8.1666, 11.625}, {54 - 8.1666, 11.625 + 3.75}, {42.3334, 11.625 + 3.75}, {42.3334, 11.625}, {54 - 8.1666, 11.625}};
             fig3.addData(BlueCube, Color.blue);
+            
+            double[][] RedPlatform = new double[][] {{21.458396, 7.9375}, {21.458396, 7.9375 + 11.125}, {26.3124, 7.9375 + 11.125}, {26.3124, 7.9375}, {21.458396, 7.9375}};
+            fig3.addData(RedPlatform, Color.red);
+            
+            double[][] BluePlatform = new double[][] {{32.541604, 7.9375}, {32.541604, 7.9375 + 11.125}, {27.6876, 7.9375 + 11.125}, {27.6876, 7.9375}, {32.541604, 7.9375}};
+            fig3.addData(BluePlatform, Color.blue);
+            
+            double[][] Scale1 = new double[][] {{24.992, 18}, {24.992, 21}, {24.992 + 4.016, 21}, {24.992 + 4.016, 18}, {24.992, 18}};
+            fig3.addData(Scale1,  Color.black);
+            
+            double[][] Scale2 = new double[][] {{24.992, 9}, {24.992, 6}, {24.992 + 4.016, 6}, {24.992 + 4.016, 9}, {24.992, 9}};
+            fig3.addData(Scale2, Color.black);
 
 
             double[][] Path = new double[][]{
-                    {0, 21}, {8, 21}, {12, 24}, {23, 24}, {23, 22}, {23, 3}, {18, 3}, {16, 4}, {16, 7}
+                    {0, 21}, {8, 21}, {12, 24}, {19, 24}, {19, 22}, {19, 3}, {15, 3}, {14, 4}, {14, 7}
             };
 
             long start = System.currentTimeMillis();
@@ -846,7 +869,7 @@ public class PathPlanner  {
                 PrintWriter pr = new PrintWriter("LeftWheels-LeftToRight-Blue");
 
                 for (int i = 0; i < LeftWheelsLeftToRightBlue.length; i++) {
-                    pr.println(LeftWheelsLeftToRightBlue[i]/20 + ", ");
+                    pr.println(LeftWheelsLeftToRightBlue[i] + ", ");
                 }
                 pr.close();
             } catch (Exception e) {
@@ -858,7 +881,7 @@ public class PathPlanner  {
                 PrintWriter pr = new PrintWriter("RightWheels-LeftToRight-Blue");
 
                 for (int i = 0; i < RightWheelsLeftToRightBlue.length; i++) {
-                    pr.println(RightWheelsLeftToRightBlue[i]/20 + ", ");
+                    pr.println(RightWheelsLeftToRightBlue[i] + ", ");
                 }
                 pr.close();
             } catch (Exception e) {
@@ -892,21 +915,33 @@ public class PathPlanner  {
          double[][] RedPortalLine2 = new double[][]{{54 - 2.298, 0}, {54, 2.5}};
          fig3.addData(RedPortalLine2, Color.red);
 
-         double[][] RedSwitch = new double[][]{{14, 7.1042}, {14, 27 - 7.1042}, {18.666666, 27 - 7.1042}, {18.6666, 7.1042}, {14, 7.1042}};
+         double[][] RedSwitch = new double[][]{{11.6666, 7.1042}, {11.6666, 27 - 7.1042}, {16.3332, 27 - 7.1042}, {16.3332, 7.1042}, {11.6666, 7.1042}};
          fig3.addData(RedSwitch, Color.red);
 
-         double[][] BlueSwitch = new double[][]{{54 - 14, 7.1042}, {54 - 14, 27 - 7.1042}, {54 - 18.6666, 27 - 7.1042}, {54 - 18.6666, 7.1042}, {54 - 14, 7.10}};
+         double[][] BlueSwitch = new double[][]{{54 - 11.6666, 7.1042}, {54 - 11.6666, 27 - 7.1042}, {54 - 16.3332, 27 - 7.1042}, {54 - 16.3332, 7.1042}, {54 - 11.6666, 7.10}};
          fig3.addData(BlueSwitch, Color.blue);
 
-         double[][] RedCube = new double[][]{{10.5, 11.625}, {10.5, 11.625 + 3.75}, {14, 11.625 + 3.75}, {14, 11.625}, {10.5, 11.625}};
+         double[][] RedCube = new double[][]{{8.1666, 11.625}, {8.1666, 11.625 + 3.75}, {11.6666, 11.625 + 3.75}, {11.6666, 11.625}, {8.1666, 11.625}};
          fig3.addData(RedCube, Color.red);
 
-         double[][] BlueCube = new double[][]{{54 - 10.5, 11.625}, {54 - 10.5, 11.625 + 3.75}, {40, 11.625 + 3.75}, {40, 11.625}, {54 - 10.5, 11.625}};
+         double[][] BlueCube = new double[][]{{54 - 8.1666, 11.625}, {54 - 8.1666, 11.625 + 3.75}, {42.3334, 11.625 + 3.75}, {42.3334, 11.625}, {54 - 8.1666, 11.625}};
          fig3.addData(BlueCube, Color.blue);
+         
+         double[][] RedPlatform = new double[][] {{21.458396, 7.9375}, {21.458396, 7.9375 + 11.125}, {26.3124, 7.9375 + 11.125}, {26.3124, 7.9375}, {21.458396, 7.9375}};
+         fig3.addData(RedPlatform, Color.red);
+         
+         double[][] BluePlatform = new double[][] {{32.541604, 7.9375}, {32.541604, 7.9375 + 11.125}, {27.6876, 7.9375 + 11.125}, {27.6876, 7.9375}, {32.541604, 7.9375}};
+         fig3.addData(BluePlatform, Color.blue);
+         
+         double[][] Scale1 = new double[][] {{24.992, 18}, {24.992, 21}, {24.992 + 4.016, 21}, {24.992 + 4.016, 18}, {24.992, 18}};
+         fig3.addData(Scale1,  Color.black);
+         
+         double[][] Scale2 = new double[][] {{24.992, 9}, {24.992, 6}, {24.992 + 4.016, 6}, {24.992 + 4.016, 9}, {24.992, 9}};
+         fig3.addData(Scale2, Color.black);
 
 
          double[][] Path = new double[][]{
-                 {0, 14}, {6, 14}, {12 , 24}, {14, 24}, {16, 23}, {16, 20}
+                 {0, 14}, {5, 14}, {9 , 25}, {11, 25}, {13, 23}, {14, 22}, {14, 20}
          };
 
          long start = System.currentTimeMillis();
@@ -947,7 +982,7 @@ public class PathPlanner  {
               PrintWriter pr = new PrintWriter("LeftWheels-MiddleToLeft-Blue");
 
               for (int i = 0; i < LeftWheelsMiddleToRightBlue.length; i++) {
-                  pr.println(LeftWheelsMiddleToRightBlue[i]/20 + ", ");
+                  pr.println(LeftWheelsMiddleToRightBlue[i] + ", ");
               }
               pr.close();
           } catch (Exception e) {
@@ -959,7 +994,7 @@ public class PathPlanner  {
               PrintWriter pr = new PrintWriter("RightWheels-MiddleToLeft-Blue");
 
               for (int i = 0; i < RightWheelsMiddleToRightBlue.length; i++) {
-                  pr.println(RightWheelsMiddleToRightBlue[i]/20 + ", ");
+                  pr.println(RightWheelsMiddleToRightBlue[i] + ", ");
               }
               pr.close();
           } catch (Exception e) {
@@ -993,21 +1028,33 @@ public class PathPlanner  {
      double[][] RedPortalLine2 = new double[][]{{54 - 2.298, 0}, {54, 2.5}};
      fig3.addData(RedPortalLine2, Color.red);
 
-     double[][] RedSwitch = new double[][]{{14, 7.1042}, {14, 27 - 7.1042}, {18.666666, 27 - 7.1042}, {18.6666, 7.1042}, {14, 7.1042}};
+     double[][] RedSwitch = new double[][]{{11.6666, 7.1042}, {11.6666, 27 - 7.1042}, {16.3332, 27 - 7.1042}, {16.3332, 7.1042}, {11.6666, 7.1042}};
      fig3.addData(RedSwitch, Color.red);
 
-     double[][] BlueSwitch = new double[][]{{54 - 14, 7.1042}, {54 - 14, 27 - 7.1042}, {54 - 18.6666, 27 - 7.1042}, {54 - 18.6666, 7.1042}, {54 - 14, 7.10}};
+     double[][] BlueSwitch = new double[][]{{54 - 11.6666, 7.1042}, {54 - 11.6666, 27 - 7.1042}, {54 - 16.3332, 27 - 7.1042}, {54 - 16.3332, 7.1042}, {54 - 11.6666, 7.10}};
      fig3.addData(BlueSwitch, Color.blue);
 
-     double[][] RedCube = new double[][]{{10.5, 11.625}, {10.5, 11.625 + 3.75}, {14, 11.625 + 3.75}, {14, 11.625}, {10.5, 11.625}};
+     double[][] RedCube = new double[][]{{8.1666, 11.625}, {8.1666, 11.625 + 3.75}, {11.6666, 11.625 + 3.75}, {11.6666, 11.625}, {8.1666, 11.625}};
      fig3.addData(RedCube, Color.red);
 
-     double[][] BlueCube = new double[][]{{54 - 10.5, 11.625}, {54 - 10.5, 11.625 + 3.75}, {40, 11.625 + 3.75}, {40, 11.625}, {54 - 10.5, 11.625}};
+     double[][] BlueCube = new double[][]{{54 - 8.1666, 11.625}, {54 - 8.1666, 11.625 + 3.75}, {42.3334, 11.625 + 3.75}, {42.3334, 11.625}, {54 - 8.1666, 11.625}};
      fig3.addData(BlueCube, Color.blue);
+     
+     double[][] RedPlatform = new double[][] {{21.458396, 7.9375}, {21.458396, 7.9375 + 11.125}, {26.3124, 7.9375 + 11.125}, {26.3124, 7.9375}, {21.458396, 7.9375}};
+     fig3.addData(RedPlatform, Color.red);
+     
+     double[][] BluePlatform = new double[][] {{32.541604, 7.9375}, {32.541604, 7.9375 + 11.125}, {27.6876, 7.9375 + 11.125}, {27.6876, 7.9375}, {32.541604, 7.9375}};
+     fig3.addData(BluePlatform, Color.blue);
+     
+     double[][] Scale1 = new double[][] {{24.992, 18}, {24.992, 21}, {24.992 + 4.016, 21}, {24.992 + 4.016, 18}, {24.992, 18}};
+     fig3.addData(Scale1,  Color.black);
+     
+     double[][] Scale2 = new double[][] {{24.992, 9}, {24.992, 6}, {24.992 + 4.016, 6}, {24.992 + 4.016, 9}, {24.992, 9}};
+     fig3.addData(Scale2, Color.black);
 
 
      double[][] Path = new double[][]{
-             {0, 14}, {6, 14}, {6, 3}, {14, 3}, {16, 3}, {16, 7}
+             {0, 14}, {6, 14}, {6, 6}, {8, 3}, {12, 3}, {14, 5}, {14, 7}
      };
 
      long start = System.currentTimeMillis();
@@ -1048,7 +1095,7 @@ public class PathPlanner  {
           PrintWriter pr = new PrintWriter("LeftWheels-MiddleToRight-Blue");
 
           for (int i = 0; i < LeftWheelsMiddleToRightBlue.length; i++) {
-              pr.println(LeftWheelsMiddleToRightBlue[i]/20 + ", ");
+              pr.println(LeftWheelsMiddleToRightBlue[i] + ", ");
           }
           pr.close();
       } catch (Exception e) {
@@ -1060,7 +1107,7 @@ public class PathPlanner  {
           PrintWriter pr = new PrintWriter("RightWheels-MiddleToRight-Blue");
 
           for (int i = 0; i < RightWheelsMiddleToRightBlue.length; i++) {
-              pr.println(RightWheelsMiddleToRightBlue[i]/20 + ", ");
+              pr.println(RightWheelsMiddleToRightBlue[i] + ", ");
           }
           pr.close();
       } catch (Exception e) {
@@ -1094,21 +1141,33 @@ public class PathPlanner  {
         double[][] RedPortalLine2 = new double[][]{{54 - 2.298, 0}, {54, 2.5}};
         fig3.addData(RedPortalLine2, Color.red);
 
-        double[][] RedSwitch = new double[][]{{14, 7.1042}, {14, 27 - 7.1042}, {18.666666, 27 - 7.1042}, {18.6666, 7.1042}, {14, 7.1042}};
+        double[][] RedSwitch = new double[][]{{11.6666, 7.1042}, {11.6666, 27 - 7.1042}, {16.3332, 27 - 7.1042}, {16.3332, 7.1042}, {11.6666, 7.1042}};
         fig3.addData(RedSwitch, Color.red);
 
-        double[][] BlueSwitch = new double[][]{{54 - 14, 7.1042}, {54 - 14, 27 - 7.1042}, {54 - 18.6666, 27 - 7.1042}, {54 - 18.6666, 7.1042}, {54 - 14, 7.10}};
+        double[][] BlueSwitch = new double[][]{{54 - 11.6666, 7.1042}, {54 - 11.6666, 27 - 7.1042}, {54 - 16.3332, 27 - 7.1042}, {54 - 16.3332, 7.1042}, {54 - 11.6666, 7.10}};
         fig3.addData(BlueSwitch, Color.blue);
 
-        double[][] RedCube = new double[][]{{10.5, 11.625}, {10.5, 11.625 + 3.75}, {14, 11.625 + 3.75}, {14, 11.625}, {10.5, 11.625}};
+        double[][] RedCube = new double[][]{{8.1666, 11.625}, {8.1666, 11.625 + 3.75}, {11.6666, 11.625 + 3.75}, {11.6666, 11.625}, {8.1666, 11.625}};
         fig3.addData(RedCube, Color.red);
 
-        double[][] BlueCube = new double[][]{{54 - 10.5, 11.625}, {54 - 10.5, 11.625 + 3.75}, {40, 11.625 + 3.75}, {40, 11.625}, {54 - 10.5, 11.625}};
+        double[][] BlueCube = new double[][]{{54 - 8.1666, 11.625}, {54 - 8.1666, 11.625 + 3.75}, {42.3334, 11.625 + 3.75}, {42.3334, 11.625}, {54 - 8.1666, 11.625}};
         fig3.addData(BlueCube, Color.blue);
+        
+        double[][] RedPlatform = new double[][] {{21.458396, 7.9375}, {21.458396, 7.9375 + 11.125}, {26.3124, 7.9375 + 11.125}, {26.3124, 7.9375}, {21.458396, 7.9375}};
+        fig3.addData(RedPlatform, Color.red);
+        
+        double[][] BluePlatform = new double[][] {{32.541604, 7.9375}, {32.541604, 7.9375 + 11.125}, {27.6876, 7.9375 + 11.125}, {27.6876, 7.9375}, {32.541604, 7.9375}};
+        fig3.addData(BluePlatform, Color.blue);
+        
+        double[][] Scale1 = new double[][] {{24.992, 18}, {24.992, 21}, {24.992 + 4.016, 21}, {24.992 + 4.016, 18}, {24.992, 18}};
+        fig3.addData(Scale1,  Color.black);
+        
+        double[][] Scale2 = new double[][] {{24.992, 9}, {24.992, 6}, {24.992 + 4.016, 6}, {24.992 + 4.016, 9}, {24.992, 9}};
+        fig3.addData(Scale2, Color.black);
 
 
         double[][] Path = new double[][]{
-                {0, 4},  {6, 4}, {14, 4}, {16, 4}, {16, 7}
+                {0, 4}, {10, 3}, {12, 3}, {13.5, 4}, {14, 5}, {14, 7}
         };
 
         long start = System.currentTimeMillis();
@@ -1149,7 +1208,7 @@ public class PathPlanner  {
             PrintWriter pr = new PrintWriter("LeftWheels-RightToRight-Blue");
 
             for (int i = 0; i < LeftWheelsRightToRightBlue.length; i++) {
-                pr.println(LeftWheelsRightToRightBlue[i]/20 + ", ");
+                pr.println(LeftWheelsRightToRightBlue[i] + ", ");
             }
             pr.close();
         } catch (Exception e) {
@@ -1161,7 +1220,7 @@ public class PathPlanner  {
             PrintWriter pr = new PrintWriter("RightWheels-RightToRight-Blue");
 
             for (int i = 0; i < RightWheelsRightToRightBlue.length; i++) {
-                pr.println(RightWheelsRightToRightBlue[i]/20 + ", ");
+                pr.println(RightWheelsRightToRightBlue[i] + ", ");
             }
             pr.close();
         } catch (Exception e) {
@@ -1195,21 +1254,33 @@ public class PathPlanner  {
         double[][] RedPortalLine2 = new double[][]{{54 - 2.298, 0}, {54, 2.5}};
         fig3.addData(RedPortalLine2, Color.red);
 
-        double[][] RedSwitch = new double[][]{{14, 7.1042}, {14, 27 - 7.1042}, {18.666666, 27 - 7.1042}, {18.6666, 7.1042}, {14, 7.1042}};
+        double[][] RedSwitch = new double[][]{{11.6666, 7.1042}, {11.6666, 27 - 7.1042}, {16.3332, 27 - 7.1042}, {16.3332, 7.1042}, {11.6666, 7.1042}};
         fig3.addData(RedSwitch, Color.red);
 
-        double[][] BlueSwitch = new double[][]{{54 - 14, 7.1042}, {54 - 14, 27 - 7.1042}, {54 - 18.6666, 27 - 7.1042}, {54 - 18.6666, 7.1042}, {54 - 14, 7.10}};
+        double[][] BlueSwitch = new double[][]{{54 - 11.6666, 7.1042}, {54 - 11.6666, 27 - 7.1042}, {54 - 16.3332, 27 - 7.1042}, {54 - 16.3332, 7.1042}, {54 - 11.6666, 7.10}};
         fig3.addData(BlueSwitch, Color.blue);
 
-        double[][] RedCube = new double[][]{{10.5, 11.625}, {10.5, 11.625 + 3.75}, {14, 11.625 + 3.75}, {14, 11.625}, {10.5, 11.625}};
+        double[][] RedCube = new double[][]{{8.1666, 11.625}, {8.1666, 11.625 + 3.75}, {11.6666, 11.625 + 3.75}, {11.6666, 11.625}, {8.1666, 11.625}};
         fig3.addData(RedCube, Color.red);
 
-        double[][] BlueCube = new double[][]{{54 - 10.5, 11.625}, {54 - 10.5, 11.625 + 3.75}, {40, 11.625 + 3.75}, {40, 11.625}, {54 - 10.5, 11.625}};
+        double[][] BlueCube = new double[][]{{54 - 8.1666, 11.625}, {54 - 8.1666, 11.625 + 3.75}, {42.3334, 11.625 + 3.75}, {42.3334, 11.625}, {54 - 8.1666, 11.625}};
         fig3.addData(BlueCube, Color.blue);
+        
+        double[][] RedPlatform = new double[][] {{21.458396, 7.9375}, {21.458396, 7.9375 + 11.125}, {26.3124, 7.9375 + 11.125}, {26.3124, 7.9375}, {21.458396, 7.9375}};
+        fig3.addData(RedPlatform, Color.red);
+        
+        double[][] BluePlatform = new double[][] {{32.541604, 7.9375}, {32.541604, 7.9375 + 11.125}, {27.6876, 7.9375 + 11.125}, {27.6876, 7.9375}, {32.541604, 7.9375}};
+        fig3.addData(BluePlatform, Color.blue);
+        
+        double[][] Scale1 = new double[][] {{24.992, 18}, {24.992, 21}, {24.992 + 4.016, 21}, {24.992 + 4.016, 18}, {24.992, 18}};
+        fig3.addData(Scale1,  Color.black);
+        
+        double[][] Scale2 = new double[][] {{24.992, 9}, {24.992, 6}, {24.992 + 4.016, 6}, {24.992 + 4.016, 9}, {24.992, 9}};
+        fig3.addData(Scale2, Color.black);
 
 
         double[][] Path = new double[][]{
-                {0, 4},  {6, 4}, {14, 4}, {22, 4}, {22, 23}, {16, 23}, {16, 20}
+                {0, 4},  {6, 4}, {14, 4}, {20, 4}, {20, 23}, {18, 25}, {16, 25}, {14, 23}, {14, 20}
         };
 
         long start = System.currentTimeMillis();
@@ -1250,7 +1321,7 @@ public class PathPlanner  {
             PrintWriter pr = new PrintWriter("LeftWheels-RightToLeft-Blue");
 
             for (int i = 0; i < LeftWheelsRightToLeftBlue.length; i++) {
-                pr.println(LeftWheelsRightToLeftBlue[i]/20 + ", ");
+                pr.println(LeftWheelsRightToLeftBlue[i] + ", ");
             }
             pr.close();
         } catch (Exception e) {
@@ -1262,7 +1333,7 @@ public class PathPlanner  {
             PrintWriter pr = new PrintWriter("RightWheels-RightToLeft-Blue");
 
             for (int i = 0; i < RightWheelsRightToLeftBlue.length; i++) {
-                pr.println(RightWheelsRightToLeftBlue[i]/20 + ", ");
+                pr.println(RightWheelsRightToLeftBlue[i] + ", ");
             }
             pr.close();
         } catch (Exception e) {
@@ -1300,18 +1371,29 @@ public class PathPlanner  {
         double[][] RedPortalLine2 = new double[][]{{54 - 2.298, 0}, {54, 2.5}};
         fig3.addData(RedPortalLine2, Color.red);
 
-        double[][] RedSwitch = new double[][]{{14, 7.1042}, {14, 27 - 7.1042}, {18.666666, 27 - 7.1042}, {18.6666, 7.1042}, {14, 7.1042}};
+        double[][] RedSwitch = new double[][]{{11.6666, 7.1042}, {11.6666, 27 - 7.1042}, {16.3332, 27 - 7.1042}, {16.3332, 7.1042}, {11.6666, 7.1042}};
         fig3.addData(RedSwitch, Color.red);
 
-        double[][] BlueSwitch = new double[][]{{54 - 14, 7.1042}, {54 - 14, 27 - 7.1042}, {54 - 18.6666, 27 - 7.1042}, {54 - 18.6666, 7.1042}, {54 - 14, 7.1042}};
+        double[][] BlueSwitch = new double[][]{{54 - 11.6666, 7.1042}, {54 - 11.6666, 27 - 7.1042}, {54 - 16.3332, 27 - 7.1042}, {54 - 16.3332, 7.1042}, {54 - 11.6666, 7.1042}};
         fig3.addData(BlueSwitch, Color.blue);
 
-        double[][] RedCube = new double[][]{{10.5, 11.625}, {10.5, 11.625 + 3.75}, {14, 11.625 + 3.75}, {14, 11.625}, {10.5, 11.625}};
+        double[][] RedCube = new double[][]{{8.1666, 11.625}, {8.1666, 11.625 + 3.75}, {11.6666, 11.625 + 3.75}, {11.6666, 11.625}, {8.1666, 11.625}};
         fig3.addData(RedCube, Color.red);
 
-        double[][] BlueCube = new double[][]{{54 - 10.5, 11.625}, {54 - 10.5, 11.625 + 3.75}, {40, 11.625 + 3.75}, {40, 11.625}, {54 - 10.5, 11.625}};
+        double[][] BlueCube = new double[][]{{54 - 8.1666, 11.625}, {54 - 8.1666, 11.625 + 3.75}, {42.3334, 11.625 + 3.75}, {42.3334, 11.625}, {54 - 8.1666, 11.625}};
         fig3.addData(BlueCube, Color.blue);
 
+        double[][] RedPlatform = new double[][] {{21.458396, 7.9375}, {21.458396, 7.9375 + 11.125}, {26.3124, 7.9375 + 11.125}, {26.3124, 7.9375}, {21.458396, 7.9375}};
+        fig3.addData(RedPlatform, Color.red);
+        
+        double[][] BluePlatform = new double[][] {{32.541604, 7.9375}, {32.541604, 7.9375 + 11.125}, {27.6876, 7.9375 + 11.125}, {27.6876, 7.9375}, {32.541604, 7.9375}};
+        fig3.addData(BluePlatform, Color.blue);
+        
+        double[][] Scale1 = new double[][] {{24.992, 18}, {24.992, 21}, {24.992 + 4.016, 21}, {24.992 + 4.016, 18}, {24.992, 18}};
+        fig3.addData(Scale1,  Color.black);
+        
+        double[][] Scale2 = new double[][] {{24.992, 9}, {24.992, 6}, {24.992 + 4.016, 6}, {24.992 + 4.016, 9}, {24.992, 9}};
+        fig3.addData(Scale2, Color.black);
 
         double[][] Path = new double[][]{
                 {0, 21}, {14, 21}
@@ -1355,7 +1437,7 @@ public class PathPlanner  {
             PrintWriter pr = new PrintWriter("LeftWheels-Straight-Blue");
 
             for (int i = 0; i < LeftWheelsDriveStraight.length; i++) {
-                pr.println(LeftWheelsDriveStraight[i]/20 + ", ");
+                pr.println(LeftWheelsDriveStraight[i] + ", ");
             }
             pr.close();
         } catch (Exception e) {
@@ -1367,7 +1449,7 @@ public class PathPlanner  {
             PrintWriter pr = new PrintWriter("RightWheels-Straight-Blue");
 
             for (int i = 0; i < RightWheelsDriveStraight.length; i++) {
-                pr.println(RightWheelsDriveStraight[i]/20 + ", ");
+                pr.println(RightWheelsDriveStraight[i] + ", ");
             }
             pr.close();
         } catch (Exception e) {
