@@ -14,7 +14,7 @@ public class TrackFinder {
         final Stream<Double> leftSpeeds = Arrays.stream(plan.smoothLeftVelocity).map(ts -> ts[1]);
         final Stream<Double> rightSpeeds = Arrays.stream(plan.smoothRightVelocity).map(ts -> ts[1]);
 
-        final Stream<Point<Double>> path = Arrays.stream(plan.origPath).map(xy -> new Point(xy[0], xy[1]));
+        final Stream<Point<Double>> path = Arrays.stream(plan.origPath).map(xy -> new Point<>(xy[0], xy[1]));
 
         return new Track(Config.TIME_STEP_S,
                 leftSpeeds.collect(Collectors.toList()),

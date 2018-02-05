@@ -2,7 +2,7 @@ package org.usfirst.frc.team6035.robot;
 
 import org.usfirst.frc.team6035.robot.util.*;
 
-public class AutoDirectionGenerator {
+class AutoDirectionGenerator {
 
     public static void main(String[] args) {
         generateDriveStraight();

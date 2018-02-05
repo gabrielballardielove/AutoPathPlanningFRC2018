@@ -1,8 +1,5 @@
 package org.usfirst.frc.team2168.robot;
 
-import javax.swing.plaf.synth.SynthEditorPaneUI;
-import java.awt.*;
-import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,36 +22,27 @@ import java.util.List;
 public class FalconPathPlanner {
 
     //Path Variables
-    public double[][] origPath;
-    public double[][] nodeOnlyPath;
-    public double[][] smoothPath;
-    public double[][] leftPath;
-    public double[][] rightPath;
+    public final double[][] origPath;
+    private double[][] smoothPath;
+    private double[][] leftPath;
+    private double[][] rightPath;
 
-    //Orig Velocity
-    public double[][] origCenterVelocity;
-    public double[][] origRightVelocity;
-    public double[][] origLeftVelocity;
-
-    //smooth velocity
-    public double[][] smoothCenterVelocity;
     public double[][] smoothRightVelocity;
     public double[][] smoothLeftVelocity;
 
     //accumulated heading
-    public double[][] heading;
+    private double[][] heading;
 
     double totalTime;
     double totalDistance;
-    double numFinalPoints;
 
-    double pathAlpha;
-    double pathBeta;
-    double pathTolerance;
+    private double pathAlpha;
+    private final double pathBeta;
+    private final double pathTolerance;
 
-    double velocityAlpha;
-    double velocityBeta;
-    double velocityTolerance;
+    private final double velocityAlpha;
+    private final double velocityBeta;
+    private final double velocityTolerance;
 
     /**
      * Constructor, takes a Path of Way Points defined as a double array of column vectors representing the global
@@ -120,7 +108,7 @@ public class FalconPathPlanner {
      * @param arr
      * @return
      */
-    public static double[][] doubleArrayCopy(double[][] arr) {
+    private static double[][] doubleArrayCopy(double[][] arr) {
 
         //size first dimension of array
         double[][] temp = new double[arr.length][arr[0].length];
@@ -130,8 +118,7 @@ public class FalconPathPlanner {
             temp[i] = new double[arr[i].length];
 
             //Copy Contents
-            for (int j = 0; j < arr[i].length; j++)
-                temp[i][j] = arr[i][j];
+            System.arraycopy(arr[i], 0, temp[i], 0, arr[i].length);
         }
 
         return temp;
@@ -149,7 +136,7 @@ public class FalconPathPlanner {
      * @param numToInject
      * @return
      */
-    public double[][] inject(double[][] orig, int numToInject) {
+    private double[][] inject(double[][] orig, int numToInject) {
         double morePoints[][];
 
         //create extended 2 Dimensional array to hold additional points
@@ -178,7 +165,6 @@ public class FalconPathPlanner {
         //copy last
         morePoints[index][0] = orig[orig.length - 1][0];
         morePoints[index][1] = orig[orig.length - 1][1];
-        index++;
 
         return morePoints;
     }
@@ -197,7 +183,7 @@ public class FalconPathPlanner {
      * @param tolerance
      * @return
      */
-    public double[][] smoother(double[][] path, double weight_data, double weight_smooth, double tolerance) {
+    private double[][] smoother(double[][] path, double weight_data, double weight_smooth, double tolerance) {
 
         //copy array
         double[][] newPath = doubleArrayCopy(path);
@@ -226,9 +212,9 @@ public class FalconPathPlanner {
      * @param path
      * @return
      */
-    public static double[][] nodeOnlyWayPoints(double[][] path) {
+    private static double[][] nodeOnlyWayPoints(double[][] path) {
 
-        List<double[]> li = new LinkedList<double[]>();
+        List<double[]> li = new LinkedList<>();
 
         //save first value
         li.add(path[0]);
@@ -269,7 +255,7 @@ public class FalconPathPlanner {
      * @param timeStep
      * @return
      */
-    double[][] velocity(double[][] smoothPath, double timeStep) {
+    private double[][] velocity(double[][] smoothPath, double timeStep) {
         double[] dxdt = new double[smoothPath.length];
         double[] dydt = new double[smoothPath.length];
         double[][] velocity = new double[smoothPath.length][2];
@@ -311,10 +297,9 @@ public class FalconPathPlanner {
      *
      * @param smoothVelocity
      * @param origVelocity
-     * @param tolerance
      * @return
      */
-    double[][] velocityFix(double[][] smoothVelocity, double[][] origVelocity, double tolerance) {
+    private double[][] velocityFix(double[][] smoothVelocity, double[][] origVelocity) {
 
         /*pseudo
          * 1. Find Error Between Original Velocity and Smooth Velocity
@@ -339,19 +324,18 @@ public class FalconPathPlanner {
         //when this converges, the fixed velocity vector will be smooth, start
         //and end with 0 velocity, and travel the same final distance as the original
         //un-smoothed velocity profile
-        double increase = 0.0;
-        boolean tolerant = Math.abs(difference[difference.length - 1]) <= tolerance;
+        boolean tolerant = Math.abs(difference[difference.length - 1]) <= 0.0000001;
 
         while (!tolerant) {
-            increase = difference[difference.length - 1] / 1 / 50;
+            double increase = difference[difference.length - 1] / 1 / 50;
 
             for (int i = 1; i < fixVel.length - 1; i++)
                 fixVel[i][1] = fixVel[i][1] - increase;
 
             difference = errorSum(origVelocity, fixVel);
 
-            tolerant = Math.abs(difference[difference.length - 1]) <= tolerance ||
-                    Math.abs(difference[difference.length - 1] - origDifference[difference.length - 1]) <= tolerance;
+            tolerant = Math.abs(difference[difference.length - 1]) <= 0.0000001 ||
+                    Math.abs(difference[difference.length - 1] - origDifference[difference.length - 1]) <= 0.0000001;
         }
 
         //fixVel =  smoother(fixVel, 0.001, 0.001, 0.0000001);
@@ -407,28 +391,24 @@ public class FalconPathPlanner {
      * @param maxTimeToComplete
      * @param timeStep
      */
-    public int[] injectionCounter2Steps(double numNodeOnlyPoints, double maxTimeToComplete, double timeStep) {
+    private int[] injectionCounter2Steps(double numNodeOnlyPoints, double maxTimeToComplete, double timeStep) {
         int first = 0;
         int second = 0;
         int third = 0;
 
         double oldPointsTotal = 0;
 
-        numFinalPoints = 0;
+        double numFinalPoints = 0;
 
-        int[] ret = null;
+        int[] ret;
 
         double totalPoints = maxTimeToComplete / timeStep;
 
         if (totalPoints < 100) {
-            double pointsFirst = 0;
-            double pointsTotal = 0;
-
-
             for (int i = 4; i <= 6; i++)
                 for (int j = 1; j <= 8; j++) {
-                    pointsFirst = i * (numNodeOnlyPoints - 1) + numNodeOnlyPoints;
-                    pointsTotal = (j * (pointsFirst - 1) + pointsFirst);
+                    double pointsFirst = i * (numNodeOnlyPoints - 1) + numNodeOnlyPoints;
+                    double pointsTotal = (j * (pointsFirst - 1) + pointsFirst);
 
                     if (pointsTotal <= totalPoints && pointsTotal > oldPointsTotal) {
                         first = i;
@@ -440,17 +420,12 @@ public class FalconPathPlanner {
 
             ret = new int[]{first, second, third};
         } else {
-
-            double pointsFirst = 0;
-            double pointsSecond = 0;
-            double pointsTotal = 0;
-
             for (int i = 1; i <= 5; i++)
                 for (int j = 1; j <= 8; j++)
                     for (int k = 1; k < 8; k++) {
-                        pointsFirst = i * (numNodeOnlyPoints - 1) + numNodeOnlyPoints;
-                        pointsSecond = (j * (pointsFirst - 1) + pointsFirst);
-                        pointsTotal = (k * (pointsSecond - 1) + pointsSecond);
+                        double pointsFirst = i * (numNodeOnlyPoints - 1) + numNodeOnlyPoints;
+                        double pointsSecond = (j * (pointsFirst - 1) + pointsFirst);
+                        double pointsTotal = (k * (pointsSecond - 1) + pointsSecond);
 
                         if (pointsTotal <= totalPoints) {
                             first = i;
@@ -463,7 +438,6 @@ public class FalconPathPlanner {
             ret = new int[]{first, second, third};
         }
 
-
         return ret;
     }
 
@@ -475,7 +449,7 @@ public class FalconPathPlanner {
      * @param smoothPath      - center smooth path of robot
      * @param robotTrackWidth - width between left and right wheels of robot of skid steer chassis.
      */
-    public void leftRight(double[][] smoothPath, double robotTrackWidth) {
+    private void leftRight(double[][] smoothPath, double robotTrackWidth) {
 
         double[][] leftPath = new double[smoothPath.length][2];
         double[][] rightPath = new double[smoothPath.length][2];
@@ -582,7 +556,7 @@ public class FalconPathPlanner {
      * @param robotTrackWidth - distance between left and right side wheels of a skid steer chassis. Known as the track width.
      */
     public void calculate(double totalTime, double timeStep, double robotTrackWidth) {
-        /**
+        /*
          * pseudo code
          *
          * 1. Reduce input waypoints to only essential (direction changing) node points
@@ -593,7 +567,7 @@ public class FalconPathPlanner {
          */
 
         //first find only direction changing nodes
-        nodeOnlyPath = nodeOnlyWayPoints(origPath);
+        final double[][] nodeOnlyPath = nodeOnlyWayPoints(origPath);
 
         //Figure out how many nodes to inject
         int[] inject = injectionCounter2Steps(nodeOnlyPath.length, totalTime, timeStep);
@@ -612,12 +586,12 @@ public class FalconPathPlanner {
         //calculate left and right path based on center path
         leftRight(smoothPath, robotTrackWidth);
 
-        origCenterVelocity = velocity(smoothPath, timeStep);
-        origLeftVelocity = velocity(leftPath, timeStep);
-        origRightVelocity = velocity(rightPath, timeStep);
+        final double[][] origCenterVelocity = velocity(smoothPath, timeStep);
+        final double[][] origLeftVelocity = velocity(leftPath, timeStep);
+        final double[][] origRightVelocity = velocity(rightPath, timeStep);
 
         //copy smooth velocities into fix Velocities
-        smoothCenterVelocity = doubleArrayCopy(origCenterVelocity);
+        double[][] smoothCenterVelocity = doubleArrayCopy(origCenterVelocity);
         smoothLeftVelocity = doubleArrayCopy(origLeftVelocity);
         smoothRightVelocity = doubleArrayCopy(origRightVelocity);
 
@@ -632,8 +606,8 @@ public class FalconPathPlanner {
         smoothRightVelocity = smoother(smoothRightVelocity, velocityAlpha, velocityBeta, velocityTolerance);
 
         //fix velocity distance error
-        smoothCenterVelocity = velocityFix(smoothCenterVelocity, origCenterVelocity, 0.0000001);
-        smoothLeftVelocity = velocityFix(smoothLeftVelocity, origLeftVelocity, 0.0000001);
-        smoothRightVelocity = velocityFix(smoothRightVelocity, origRightVelocity, 0.0000001);
+        smoothCenterVelocity = velocityFix(smoothCenterVelocity, origCenterVelocity);
+        smoothLeftVelocity = velocityFix(smoothLeftVelocity, origLeftVelocity);
+        smoothRightVelocity = velocityFix(smoothRightVelocity, origRightVelocity);
     }
 }

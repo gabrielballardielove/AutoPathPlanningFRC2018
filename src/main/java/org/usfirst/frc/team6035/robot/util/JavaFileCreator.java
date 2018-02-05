@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import static java.nio.file.Files.createDirectory;
-import static java.nio.file.Files.createFile;
 
 public class JavaFileCreator {
 
@@ -49,7 +47,7 @@ public class JavaFileCreator {
     private static void appendSpeedContent(String variableName, List<Double> speeds, StringBuilder builder) {
         builder.append("  private double[] ").append(variableName).append(" = {\n").append("    ");
 
-        Sep sep = new Sep(", ");
+        Sep sep = new Sep();
         speeds.forEach(s -> {
             String sf = String.format("%.2f", s);
             builder.append(sep.sep()).append(sf);
@@ -60,14 +58,14 @@ public class JavaFileCreator {
     }
 
     private static class Sep {
-        private String sep;
+        private final String sep;
         private String nextSep = "";
 
-        public Sep(String sep) {
-            this.sep = sep;
+        Sep() {
+            this.sep = ", ";
         }
 
-        public String sep() {
+        String sep() {
             String s = nextSep;
             nextSep = sep;
             return s;
