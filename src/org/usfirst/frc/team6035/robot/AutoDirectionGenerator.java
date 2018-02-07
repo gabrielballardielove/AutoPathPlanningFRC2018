@@ -119,10 +119,10 @@ public class AutoDirectionGenerator {
 	
 	
 	private static void generate(String className, double[][] wayPoints, double totalTime) {
-		PathPlanner pathPlanner = new PathPlanner(wayPoints);
-		pathPlanner.calculate(totalTime, 0.02, 2);
-		double[] smoothLeftSpeeds = pathPlanner.getYVector(pathPlanner.smoothLeftVelocity);
-		double[] smoothRightSpeeds = pathPlanner.getYVector(pathPlanner.smoothRightVelocity);
+		PathPlanner planner = new PathPlanner(wayPoints);
+		planner.calculate(totalTime, 0.02, 2);
+		double[] smoothLeftSpeeds = PathPlanner.getYVector(planner.smoothLeftVelocity);
+		double[] smoothRightSpeeds = PathPlanner.getYVector(planner.smoothRightVelocity);
 		JavaFileCreator.createClass(className, smoothLeftSpeeds, smoothRightSpeeds);
 	}
 }

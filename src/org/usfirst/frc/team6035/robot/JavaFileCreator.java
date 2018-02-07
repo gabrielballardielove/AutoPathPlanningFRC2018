@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 import static java.nio.file.Files.createDirectory;
 
@@ -19,9 +18,6 @@ public class JavaFileCreator {
         StringBuilder builder = new StringBuilder() ;
 
         builder.append("package org.usfirst.frc.team6035.robot.auto;\n\n")
-
-                .append("import org.usfirst.frc.team6035.robot.*;\n\n")
-
                 .append("public class ").append(name).append(" extends AutoDirection {\n\n");
 
         appendSpeedContent("leftMotorSpeeds", LeftSpeeds, builder);
@@ -49,7 +45,7 @@ public class JavaFileCreator {
 
         Sep sep = new Sep();
        for (int i = 0; i < speeds.length; i++) {
-    	   String sf = String.format("%2f", speeds[i]);
+    	   String sf = String.format("%.2f", speeds[i]);
     	   builder.append(sep.sep()).append(sf);
        }
 
@@ -88,7 +84,6 @@ public class JavaFileCreator {
         }
 
         final Path file = out.resolve(name + ".java");
-        System.out.println(file.toAbsolutePath().toString());
         Files.write(file, content.getBytes());
     }
 }
