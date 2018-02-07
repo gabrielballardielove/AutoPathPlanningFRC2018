@@ -33,9 +33,6 @@ public class FalconPathPlanner {
     //accumulated heading
     private double[][] heading;
 
-    double totalTime;
-    double totalDistance;
-
     private double pathAlpha;
     private final double pathBeta;
     private final double pathTolerance;
@@ -78,27 +75,6 @@ public class FalconPathPlanner {
         velocityTolerance = 0.0000001;
     }
 
-
-
-    public static void print(double[] path) {
-        System.out.println("X: \t Y:");
-
-        for (double u : path)
-            System.out.println(u);
-    }
-
-
-    /**
-     * Prints Cartesian Coordinates to the System Output as Column Vectors in the Form X	Y
-     *
-     * @param path
-     */
-    public static void print(double[][] path) {
-        System.out.println("X: \t Y:");
-
-        for (double[] u : path)
-            System.out.println(u[0] + "\t" + u[1]);
-    }
 
     /**
      * Performs a deep copy of a 2 Dimensional Array looping thorough each element in the 2D array
@@ -398,8 +374,6 @@ public class FalconPathPlanner {
 
         double oldPointsTotal = 0;
 
-        double numFinalPoints = 0;
-
         int[] ret;
 
         double totalPoints = maxTimeToComplete / timeStep;
@@ -413,7 +387,6 @@ public class FalconPathPlanner {
                     if (pointsTotal <= totalPoints && pointsTotal > oldPointsTotal) {
                         first = i;
                         second = j;
-                        numFinalPoints = pointsTotal;
                         oldPointsTotal = pointsTotal;
                     }
                 }
@@ -431,7 +404,6 @@ public class FalconPathPlanner {
                             first = i;
                             second = j;
                             third = k;
-                            numFinalPoints = pointsTotal;
                         }
                     }
 
