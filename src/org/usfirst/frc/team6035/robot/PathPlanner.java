@@ -660,7 +660,6 @@ public class PathPlanner  {
     public static void BluePathLeftToLeft() {
 
 
-
             //Lets create a bank image
             LinePlot fig3 = new LinePlot(new double[][]{{0.0, 0.0}});
             fig3.yGridOn();

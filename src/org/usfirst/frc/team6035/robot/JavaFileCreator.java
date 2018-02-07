@@ -18,7 +18,7 @@ public class JavaFileCreator {
     private static String buildContent(String name, double[] LeftSpeeds, double[] RightSpeeds) {
         StringBuilder builder = new StringBuilder() ;
 
-        builder.append("package org.usfirst.frc.team6035.robot\n\n")
+        builder.append("package org.usfirst.frc.team6035.robot.auto;\n\n")
 
                 .append("import org.usfirst.frc.team6035.robot.*;\n\n")
 
